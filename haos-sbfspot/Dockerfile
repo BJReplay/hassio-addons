@@ -3,7 +3,7 @@ ARG BUILD_FROM
 FROM $BUILD_FROM AS builder-base
 
 # Execute during the build of the image
-ARG TEMPIO_VERSION BUILD_ARCH
+ARG TEMPIO_VERSION BUILD_ARCH SBFSPOT_INTERVAL
 RUN \
     curl -sSLf -o /usr/bin/tempio \
     "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}"
@@ -39,13 +39,14 @@ RUN \
 # runtinme container   
 FROM $BUILD_FROM
 
-ARG TEMPIO_VERSION BUILD_ARCH
+ARG TEMPIO_VERSION BUILD_ARCH SBFSPOT_INTERVAL
 RUN \
     curl -sSLf -o /usr/bin/tempio \
     "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+ENV SBFSPOT_INTERVAL $SBFSPOT_INTERVAL
 
 RUN apk update && apk add --no-cache \
     bluez=5.79-r0 \
