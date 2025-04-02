@@ -16,3 +16,4 @@ codenotary:
   base_image: notary@home-assistant.io
 args:
   TEMPIO_VERSION: "2021.09.0"
+  SBFSPOT_INTERVAL: 300
