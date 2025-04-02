@@ -43,7 +43,6 @@ options:
   PVoutput_SID: "!secret pvoSID"
   PVoutput_Key: "!secret pvoAPIkey"
   LogLevel: info
-  DisableCSV: false
   DisableDB: false
   SBFspotInterval: 300
 schema:
@@ -96,6 +95,5 @@ schema:
   PVoutput_SID: "password?"
   PVoutput_Key: "password?"
   LogLevel: list(debug|info||warning||error)?
-  DisableCSV: bool
   DisableDB: bool
   SBFspotInterval: int
